@@ -3,6 +3,7 @@ package org.skynet.sitema;
 
 import java.util.Scanner;
 import org.skynet.dao.EstudianteJpaController;
+import org.skynet.dao.exceptions.NonexistentEntityException;
 import org.skynet.dominio.Estudiante;
 
 
@@ -47,19 +48,40 @@ public static void main(String[] args){
 	
 // Actualizar Tupla
 		case 3:
-			break;
-// Eliminar Tupla
-		case 4:
-			break;
+                    e = obtenerEstudiante();
+                    System.out.println(e);
+                    System.out.println("Ingrese los nombres y apellidos nuevos");
+                    e = new Estudiante(sc.nextInt(), sc.nextInt(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine());
+                    try {
+                        estudianteDao.editarEstudiante(e);
+                    } catch (Exception ex) {
+                        System.out.println("No se puede actualizar el registro...");
+                    }
+                    break;
+
+                case 4:
+                    e = obtenerEstudiante();
+                    System.out.println("Esta seguro de eliminar el siguiente Estudiante?");
+                    System.out.println(e);        
+                    try {
+                        estudianteDao.eliminarEstudiante(id);
+                        System.out.println("Registro eliminado exitrosamente!");
+                    } catch (NonexistentEntityException ex) {
+                        System.out.println("No se puede eliminar el registro.");
+                    }
+                    break;
+					
 // Listar Alumnos
 		case 5:
 			break;
 // salir del Menu
 		case 6:
-			break;
+                    System.out.println("Gracias por utilizar el menu!");
+                    break;
 // mensaje por default
 		default:
-			System.out.println("NO ES UNA OPCION DEL MENU!");
+                    System.out.println("No es una opción del menu, escoja una del menu...");
+                    break;
 	
 	}
 }
