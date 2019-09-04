@@ -2,15 +2,16 @@
 package org.skynet.sitema;
 
 import java.util.Scanner;
+import org.skynet.dao.EstudianteJpaController;
 import org.skynet.dominio.Estudiante;
 
 
 public class Principal {
     
     private static Scanner sc = new Scanner(System.in); // lee las opciones del usuario
-    private static Scanner spersona = new Scanner(System.in); 
+    private static Scanner sestudiante = new Scanner(System.in); 
     private static Estudiante e;
-    //private static PersonaJpaController personaDao = new PersonaJpaController();
+    private static EstudianteJpaController estudianteDao = new EstudianteJpaController();
     private static int op, id;
     
 // creacion de menu y switch por : Michael Mazariegos 
@@ -37,7 +38,13 @@ public static void main(String[] args){
 			break;
 // Agregar Alumno a SGBD
 		case 2:
-			break;
+                    e = getEstudiante();
+                if (estudianteDao.agregarEstudiante(e))
+                System.out.println("Se agrago con exito");
+                else
+                System.out.println("No se pudo agregar a la nueva Estudiante");
+                break;
+	
 // Actualizar Tupla
 		case 3:
 			break;
@@ -57,4 +64,20 @@ public static void main(String[] args){
 	}
 }
         
+private static Estudiante obtenerEstudiante(){
+System.out.println("Ingrese el codigo del Estudiante");
+id = sc.nextInt();
+e = estudianteDao.buscarEstudiante(id);
+return e;
 }
+
+private static Estudiante getEstudiante(){
+System.out.println("Ingrese el codigo, el carnet, los nombres, apellidos, grado y seccion del Estudiante");
+Estudiante e = new Estudiante(sc.nextInt(), sc.nextInt(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine());
+            return e;
+}
+        
+        
+}
+        
+
