@@ -1,4 +1,3 @@
-
 package org.skynet.sitema;
 
 import java.util.Scanner;
@@ -50,10 +49,11 @@ public static void main(String[] args){
 		case 3:
                     e = obtenerEstudiante();
                     System.out.println(e);
-                    System.out.println("Ingrese los nombres y apellidos nuevos");
+                    System.out.println("Ingrese el codigo, el carnet, los nombres, apellidos, grado y seccion del Estudiante");
                     e = new Estudiante(sc.nextInt(), sc.nextInt(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine());
                     try {
                         estudianteDao.editarEstudiante(e);
+                        System.out.println("Se ha actualizado correctamente");
                     } catch (Exception ex) {
                         System.out.println("No se puede actualizar el registro...");
                     }
@@ -86,20 +86,18 @@ public static void main(String[] args){
 	}
 }
         
-private static Estudiante obtenerEstudiante(){
-System.out.println("Ingrese el codigo del Estudiante");
-id = sc.nextInt();
-e = estudianteDao.buscarEstudiante(id);
-return e;
+    private static Estudiante obtenerEstudiante(){
+        System.out.println("Ingrese el codigo del Estudiante");
+        id = sc.nextInt();
+        e = estudianteDao.buscarEstudiante(id);
+        return e;
 }
 
-private static Estudiante getEstudiante(){
-System.out.println("Ingrese el codigo, el carnet, los nombres, apellidos, grado y seccion del Estudiante");
-Estudiante e = new Estudiante(sc.nextInt(), sc.nextInt(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine());
-            return e;
-}
-        
-        
+    private static Estudiante getEstudiante(){
+        System.out.println("Ingrese el codigo, el carnet, los nombres, apellidos, grado y seccion del Estudiante");
+        Estudiante e = new Estudiante(sc.nextInt(), sc.nextInt(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine(), sestudiante.nextLine());
+        return e;
+    }
 }
         
 

@@ -1,4 +1,4 @@
- create  database if not exists DBSkynetIN5AM;
+create  database if not exists DBSkynetIN5AM;
 use DBSkynetIN5AM;
 
 create table Estudiantes(
@@ -10,3 +10,5 @@ create table Estudiantes(
     seccion varchar(255),
     primary key pk_codigoEstudiante(codigoEstudiante)
 );
+
+select * from Estudiantes;
