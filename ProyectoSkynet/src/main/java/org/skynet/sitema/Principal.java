@@ -1,14 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package org.skynet.sitema;
 
-/**
- *
- * @author programacion
- */
+import java.util.Scanner;
+import org.skynet.dominio.Estudiante;
+
 public class Principal {
     
+    private static Scanner sc = new Scanner(System.in); // lee las opciones del usuario
+    private static Scanner spersona = new Scanner(System.in); 
+    private static Estudiante e;
+    //private static PersonaJpaController personaDao = new PersonaJpaController();
+    private static int op, id;
+    
+    public static void main(String[] args) {
+        
+        
+        
+    }
+    
+        
 }
